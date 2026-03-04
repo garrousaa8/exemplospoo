@@ -1,21 +1,51 @@
 public class Conta {
-
-    int numeroDaConta;
-    double saldo;
-    double limite;
-    Cliente cliente;
+    // na declaração de atributos usar private
+    private int numeroDaConta;
+    private double saldo;
+    private Cliente cliente;
 
     public Conta(int numeroDaConta, double saldo,
                  double limite, Cliente cliente){
         this.numeroDaConta = numeroDaConta;
         this.saldo = saldo;
-        this.limite = limite;
+        this.cliente = cliente;
+    }
+
+    public Conta(){
+
+    }
+    // usar get para acessar atributos privados
+    public int getNumeroDaConta(){
+        return this.numeroDaConta;
+    }
+    // usar set para modificar atributos privados
+    public void setNumeroDaConta(int novaConta){
+        this.numeroDaConta = novaConta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double novoSaldo) {
+        if (novoSaldo <= 0){
+            System.out.println("O novo saldo deve ser positivo!");
+        } else {
+            this.saldo = novoSaldo;
+        }
+    }
+
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
     public void exibirDetalhes(){
         System.out.println("R$ " + saldo);
-        System.out.println(limite);
         System.out.println(numeroDaConta);
         System.out.println(cliente.titular);
         System.out.println(cliente.cpf);
@@ -28,10 +58,15 @@ public class Conta {
         System.out.println("Saldo após o saque: " + saldo);
     }
 
-    public void depositar(double valorDeposito){
-        saldo += valorDeposito;
-        System.out.println("Deposito realizado com sucesso!");
-        System.out.println("Saldo após o depósito: " + saldo);
+
+    public boolean depositar(double valorDeposito){
+        if (valorDeposito <=0){
+            System.out.println("O valor deve ser positivo!");
+        return false;
+        }
+        setSaldo(saldo += valorDeposito);
+        System.out.println("Depósito realizado com sucesso");
+        return true;
     }
 }
 

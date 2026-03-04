@@ -13,10 +13,17 @@ public class App {
 //        c1.cliente.rg = 1241799;
 
 
-//        Conta c2 = new Conta();
-//        c2.saldo = 1000;
-//        c2.limite = 500;
-//        c2.numeroDaConta = 124;
+        Conta c2 = new Conta();
+        // usar set par6a modificar atributos privados
+        c2.setNumeroDaConta(1125878);
+        System.out.println(c2.getNumeroDaConta());
+        c2.setCliente(cliente);
+        c2.setSaldo(10);
+//        System.out.println(c2.getSaldo());
+        c2.depositar(10);
+//        System.out.println(c2.getSaldo());
+
+
 
         c1.exibirDetalhes();
 //        System.out.println("--------------");
@@ -25,5 +32,14 @@ public class App {
 //        c1.sacar(150);
 //        c1.depositar(200);
         //System.out.println("Saldo após o saque: " + c1.saldo);
+        ContaPoupanca cp = new ContaPoupanca();
+        cp.setCliente(cliente);
+        cp.setSaldo(100);
+        cp.setNumeroDaConta(123456);
+        double rendimento =
+                cp.calcularRendimento(cp.getSaldo());
+        cp.setRendimento(rendimento);
+        cp.exibirDetalhes();
+        System.out.println("Rendimento poupança R$ " + cp.getRendimento());
     }
 }
